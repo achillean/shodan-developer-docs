@@ -42,5 +42,3 @@ Generate IP list
 		puts "Error: #{e.to_s}"
 		exit 1
 	end
-
-The script can also be downloaded from http://www.surtri.com/shodan_ips.rb.

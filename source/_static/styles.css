@@ -1,0 +1,24 @@
+body {
+	background-color: #222 !important;
+}
+
+.navbar {
+	border-bottom: 1px solid #444;
+	margin-bottom: 0;
+}
+
+.navbar-inner {
+	background-image: url(bg-greydark.png);
+	background-repeat: repeat;
+	border-bottom: 1px solid black;
+	padding: 5px 10px;
+}
+
+body > div.related {
+	background-color: white !important;
+	background: url(bg-greydark.png);
+}
+
+.document {
+	background: url(bg-greylight.png);
+}

@@ -1,0 +1,13 @@
+{% extends "!layout.html" %}
+
+{% set css_files = css_files + ['_static/styles.css'] %}
+
+{% block header %}
+	<div class='navbar'>
+		<div class='navbar-inner'>
+			<a href='/' alt='Shodan Developer Documentation'>
+				<img src='{{ pathto("_static/shodan-developer-logo.png", 1) }}' />
+			</a>
+		</div>
+	</div>
+{% endblock %}

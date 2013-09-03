@@ -91,9 +91,14 @@ JSON API Reference
 
 
 .. http:get:: /api/locations
+	
+	Get a list of the top 10,000 countries and cities that match the given search query.
 
 	:query key: Shodan API key
 	:query q: Search query
+
+	.. note::
+		Uses 1 query credit.
 
 	**Example Request**:
 
@@ -133,7 +138,19 @@ JSON API Reference
 
 	.. note::
 
-		If the the `page number` parameter is greater than 1 the API request consumes a credit.
+		Uses 1 query credit if:
+			- Page number > 1
+			- Search query contains any of the following filters
+				+ city
+				+ country
+				+ net
+				+ geo
+				+ before
+				+ after
+				+ org
+				+ isp
+				+ title
+				+ html
 
 	**Example Request**:
 
@@ -156,109 +173,3 @@ JSON API Reference
 				}
 			]
 		}
-
-
-.. http:get:: /api/search_exploits
-	
-	Search the Shodan Exploits database for vulnerability information.
-
-	:query key: Shodan API key
-
-	**Example Request**:
-
-	.. sourcecode:: http
-
-		GET /api/search_exploits
-
-	**Example Response**:
-
-	.. sourcecode:: javascript
-
-		{
-			'total': 1402,
-			'sources': [
-				['osvdb', 665],
-				['cve', 539],
-				['exploitdb', 102],
-				['packetstorm', 71],
-				['metasploit', 25]
-			],
-			'matches': [
-				{
-					'name': 'Multiple XSS in Apache OFBiz',
-					'source_link': 'www.exploit-db.com',
-					'source': 'Exploit DB',
-					'link': 'http://www.exploit-db.com/exploits/12330',
-					'references': [
-						['CVE', '2010-0432']
-					],
-					'id': 12330,
-					'desc': null
-				}
-			]
-		}
-
-
-.. http:get:: /api/exploitdb/search
-	
-	Search the ExploitDB database.
-
-	:query key: Shodan API key
-	:query q: Search query
-	:query author: Author of the exploit
-	:query platform: Platform that the exploit targets
-	:query type: Type of the exploit (ex. webapps)
-	:query port: Port that the service runs on for remote exploits
-	:query cve: CVE identifier
-	:query code: Search the content of the exploit itself
-	:query id: ExploitDB identifier
-
-	**Example Request**:
-
-	.. sourcecode:: http
-
-		GET /api/exploitdb/search?q=apache&key=SHODAN_API_KEY
-
-	**Example Response**:
-
-	.. sourcecode:: javascript
-
-		{
-			'matches': [
-				{
-					'author': 'Lucas Apa',
-					'cve': '2010-0432',
-					'date': '21.03.2010',
-					'description': 'Multiple XSS in Apache OFBiz',
-					'id': 12330,
-					'platform': 'php',
-					'port': 0,
-					'type': 'webapps'
-				}
-			]
-		}
-
-
-.. http:get:: /api/exploitdb/download
-
-	Download the exploit code for an ExploitDB entry.
-
-	:query key: Shodan API key
-	:query id: ExploitDB identifier
-
-	**Example Request**:
-
-	.. sourcecode:: http
-
-		GET /api/exploitdb/download?id=12330&key=SHODAN_API_KEY
-
-
-.. http:get:: /api/msf/search
-
-	:query key: Shodan API key
-
-
-.. http:get:: /api/msf/download
-
-	:query key: Shodan API key
-

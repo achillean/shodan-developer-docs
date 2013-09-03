@@ -46,6 +46,3 @@ Generate IP list
 	for ( my $i = 0; $i < $#matches; $i++ ) {
 		print "$matches[$i]{ip}\n";
 	}
-
-
-The script can also be downloaded from http://www.surtri.com/shodan_ips.pl.

@@ -61,7 +61,7 @@ Contents:
 .. toctree::
    :maxdepth: 3
    
-   rest
+   shodan-rest
    
    python/index
    ruby/index

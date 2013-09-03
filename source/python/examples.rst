@@ -39,5 +39,3 @@ Generate IP list
 	except Exception, e:
 		print 'Error: %s' % e
 		sys.exit(1)
-
-The script can also be downloaded from http://www.surtri.com/shodan_ips.py.
