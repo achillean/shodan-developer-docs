@@ -1,13 +1,29 @@
 {% extends "!layout.html" %}
 
-{% set css_files = css_files + ['_static/styles.css'] %}
+{% set css_files = css_files + ['https://static.shodan.io/scanhub/css/styles.css', '_static/styles.css'] %}
 
 {% block header %}
 	<div class='navbar'>
 		<div class='navbar-inner'>
-			<a href='/' alt='Shodan Developer Documentation'>
-				<img src='{{ pathto("_static/shodan-developer-logo.png", 1) }}' />
-			</a>
+			<div>
+				<a href='/' alt='Shodan Developer Documentation'>
+					<img src='{{ pathto("_static/shodan-developer-logo.png", 1) }}' />
+				</a>
+			</div>
+
+			<div id="searchbox-navbar" style="display: none">
+			    <form class="search" action="{{ pathto('search') }}" method="get">
+			      <input type="text" name="q" />
+			      <input type="submit" value="{{ _('Search') }}" />
+			      <input type="hidden" name="check_keywords" value="yes" />
+			      <input type="hidden" name="area" value="default" />
+			    </form>
+			</div>
+			<script type="text/javascript">$('#searchbox-navbar').show(0);</script>
 		</div>
+		<div style='clear:both'></div>
 	</div>
+{% endblock %}
+
+{% block sidebarsearch %}
 {% endblock %}
